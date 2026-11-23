@@ -1,0 +1,17 @@
+{
+  "name": "vscode-tabs",
+  "version": "0.1.0",
+  "description": "Real tabs for VS Code on Linux: one window, one VS Code (served by `code serve-web`) per tab.",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "tsc -p . && electron ."
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "electron": "45.3.4",
+    "typescript": "5.9.3"
+  }
+}
