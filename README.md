@@ -65,8 +65,9 @@ Outside NixOS, plain `npm install && npm start` works with npm's own Electron.
 
 Every other key goes to VS Code, including Ctrl+W, Ctrl+N, Ctrl+P and the
 F-keys. The app has no menu bar, so no menu accelerators steal keys. VS
-Code's web build normally leaves Ctrl+W, Ctrl+N and Ctrl+T to the browser; here
-it is told it runs as an installed app, so it uses its desktop keybindings.
+Code's web build gives some of these keys up to the browser unless it runs as
+an installed app, so each tab reports itself as one (`display-mode:
+standalone`); Ctrl+W, Ctrl+N and Ctrl+P were checked to work.
 
 The keys above take precedence over VS Code's own bindings for the same keys:
 Ctrl+T (VS Code: go to symbol in workspace), Ctrl+Tab (switch editors) and
@@ -114,7 +115,8 @@ another glibc: the Nix package sets `VSCODE_SERVER_CUSTOM_GLIBC_LINKER`,
 `VSCODE_SERVER_CUSTOM_GLIBC_PATH` and `VSCODE_SERVER_PATCHELF_PATH` to glibc,
 libstdc++ and patchelf from nixpkgs (unless you already set them), and the
 server patches its `node` on start. Because of this, VS Code shows a one-time
-notice that you are connected to an unsupported OS; tick "Do not show again".
+notice that you are connected to an unsupported OS. Tick "Do not show again"
+once; it stays hidden as long as the server port stays the same (see below).
 `nix develop` sets the same variables for `npm start`.
 
 ## Limits and caveats
